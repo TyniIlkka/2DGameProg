@@ -4,38 +4,27 @@ using UnityEngine;
 
 namespace SpaceShooter
 {
-    public class Player : MonoBehaviour
+    public class Player : SpaceshipBase
     {
+        Vector3 movementVector = Vector3.zero;
 
-        public float speed = 1f;
-        // Update is called once per frame
-        void Update()
+        public const string HorizontalAxis = "Horizontal";
+        public const string VerticalAxis = "Vertical";
+
+        private Vector3 GetInputVector()
         {
-            transform.Translate(GetMovementVector());
+            float horizontalInput = Input.GetAxis(HorizontalAxis);
+            float verticalInput = Input.GetAxis(VerticalAxis);
+          
+            return new Vector3(horizontalInput, verticalInput);
         }
 
-        private Vector3 GetMovementVector()
+        protected override void Move()
         {
-            Vector3 movementVector = Vector3.zero;
-
-            if (Input.GetKey(KeyCode.LeftArrow)){
-                movementVector += Vector3.left;
-            }
-
-            if (Input.GetKey(KeyCode.RightArrow)){
-                movementVector += Vector3.right;
-            }
-
-            if (Input.GetKey(KeyCode.UpArrow)){
-                movementVector += Vector3.up;
-            }
-
-            if (Input.GetKey(KeyCode.DownArrow)){
-                movementVector += Vector3.down;
-            }
-
-            movementVector = movementVector * Time.deltaTime * speed;
-            return movementVector;
+            Vector3 inputVector = GetInputVector();
+            Vector2 movementVector = inputVector * Speed;
+            transform.Translate(GetInputVector());
         }
+
     }
 }

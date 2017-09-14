@@ -12,6 +12,9 @@ namespace SpaceShooter
         [SerializeField]
         private GameObject[] _enemyMovementTargets;
 
+        private int counter = 0;
+        private int timer = 0;
+
         protected void Awake()
         {
             if(_enemySpawner == null)
@@ -30,6 +33,7 @@ namespace SpaceShooter
 
             SpawnEnemyUnit();
         }
+
         private EnemySpaceShip SpawnEnemyUnit()
         {
             GameObject spawnedEnemyObject = _enemySpawner.Spawn();

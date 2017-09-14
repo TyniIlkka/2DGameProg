@@ -33,7 +33,7 @@ namespace SpaceShooter {
             }
 
             UpdateMovementTarget();
-            Vector3 direction = (CurrentMovementTarget.position + transform.position).normalized;
+            Vector3 direction = (CurrentMovementTarget.position - transform.position).normalized;
             transform.Translate(direction * Speed * Time.deltaTime);
 
         }
@@ -43,7 +43,7 @@ namespace SpaceShooter {
             if ( Vector3.Distance( transform.position,
                 CurrentMovementTarget.position)< _reachDistance)
             {
-                if(_currentMovementTargetIndex >= _movementTargets.Length - 1)
+                if(_currentMovementTargetIndex >= _movementTargets.Length -1)
                 {
                     _currentMovementTargetIndex = 0;
                 }
@@ -52,6 +52,13 @@ namespace SpaceShooter {
                     _currentMovementTargetIndex++;
                 }
             }
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+
+            Debug.DrawLine(transform.position, CurrentMovementTarget.position, Color.green);
         }
     }
 }

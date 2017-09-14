@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SpaceShooter
 {
-    public interface Healt
+    public interface IHealt
     {
         int CurrenHealt { get; }
 

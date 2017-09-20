@@ -1,13 +1,12 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using UnityEngine;
 
 namespace SpaceShooter
 {
-    public interface IHealt
+    public interface IHealth
     {
-        int CurrenHealt { get; }
+        int CurrentHealt { get; }
 
         void IncreaseHealt(int amount);
 

@@ -52,5 +52,15 @@ namespace SpaceShooter
         {
             return _damage;
         }
+
+        public void OnHit(Collision collision)
+        {
+            var hit = collision.gameObject;
+            var health = hit.GetComponent<Health>();
+            if (health != null)
+            {
+                health.DegcreaseHealt(20);
+            }
+        }
     }
 }

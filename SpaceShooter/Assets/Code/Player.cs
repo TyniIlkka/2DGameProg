@@ -36,6 +36,5 @@ namespace SpaceShooter
             Vector2 movementVector = inputVector * Speed;
             transform.Translate(movementVector * Time.deltaTime);
         }
-
     }
 }

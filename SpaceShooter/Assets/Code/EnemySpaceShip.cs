@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SpaceShooter {
 
-    public class EnemySpaceShip : SpaceshipBase
+    public class EnemySpaceShip : SpaceShipBase
     {
         [SerializeField]
         private float _reachDistance = 0.5f;

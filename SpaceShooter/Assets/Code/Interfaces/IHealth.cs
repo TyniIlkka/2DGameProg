@@ -6,11 +6,11 @@ namespace SpaceShooter
 {
     public interface IHealth
     {
-        int CurrentHealt { get; }
+        int CurrentHealth { get; }
 
-        void IncreaseHealt(int amount);
+        void IncreaseHealth(int amount);
 
-        void DegcreaseHealt(int amount);
+        void DegcreaseHealth(int amount);
 
 
     }

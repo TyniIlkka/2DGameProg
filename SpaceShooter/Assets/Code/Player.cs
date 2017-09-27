@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SpaceShooter
 {
-    public class Player : SpaceshipBase
+    public class Player : SpaceShipBase
     {
         Vector3 movementVector = Vector3.zero;
 

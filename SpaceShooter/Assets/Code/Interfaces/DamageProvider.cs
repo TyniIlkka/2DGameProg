@@ -5,8 +5,8 @@ using System.Text;
 
 namespace SpaceShooter
 {
-    public interface DamageProvider
+    public interface IDamageProvider
     {
-        int GetDamage();
+        int GetDamage { get; }
     }
 }

@@ -1,12 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace SpaceShooter
 {
-    public class Health : MonoBehaviour
-    {
+    public class Health : MonoBehaviour, IHealth
 
+    {
+        //Collect every needed information
         [SerializeField]
         private int currentHealth;
         [SerializeField]
@@ -16,30 +18,43 @@ namespace SpaceShooter
         [SerializeField]
         private int minHealth;
 
+        int IHealth.CurrentHealth
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public void Awake()
         {
             currentHealth = startingHealth;
         }
 
-        public void IncreaseHealt(int amount)
+        // Increase SpaceShips/EnemyShips health
+        void IHealth.IncreaseHealth(int amount)
         {
             currentHealth += amount;
 
-            if(currentHealth >= maxHealth)
+            if (currentHealth >= maxHealth)
             {
                 currentHealth = maxHealth;
             }
+            Debug.Log(currentHealth);
+            
         }
 
-        public void DegcreaseHealt(int amount)
+        // Degcrease SpaceShips/EnemyShips health
+        public void DegcreaseHealth(int amount)
         {
             currentHealth -= amount;
 
-            if(currentHealth <= minHealth)
+            if (currentHealth <= minHealth)
             {
                 currentHealth = minHealth;
             }
-            
+
+            Debug.Log(currentHealth);
         }
     }
 }

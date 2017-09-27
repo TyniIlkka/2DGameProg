@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SpaceShooter
 {
 
-    public class Projectile : MonoBehaviour, DamageProvider
+    public class Projectile : MonoBehaviour, IDamageProvider
     {
 
         [SerializeField]
@@ -16,6 +16,15 @@ namespace SpaceShooter
         private Rigidbody2D _rigidbody;
         private Vector2 _direction;
         private bool _islaunched = false;
+
+        //Trying to get damage work from projectile
+        int IDamageProvider.GetDamage
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+        }
 
         protected void Awake()
         {
@@ -59,7 +68,8 @@ namespace SpaceShooter
             var health = hit.GetComponent<Health>();
             if (health != null)
             {
-                health.DegcreaseHealt(20);
+                health.DegcreaseHealth(20);
+
             }
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SpaceShooter
 {
-    public class Destoyer : MonoBehaviour
+    public class Destroyer : MonoBehaviour
     {
         void OnTriggerEnter2D(Collider2D other)
         {

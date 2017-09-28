@@ -9,20 +9,21 @@ namespace SpaceShooter
 
     {
         //Collect every needed information
-        [SerializeField]
-        private int currentHealth;
-        [SerializeField]
-        private int startingHealth;
-        [SerializeField]
-        private int maxHealth;
-        [SerializeField]
-        private int minHealth;
+        [SerializeField] private int startingHealth;        
+        [SerializeField] private int maxHealth;
+        [SerializeField] private int minHealth;
 
-        int IHealth.CurrentHealth
+        [SerializeField] private int currentHealth;
+
+        public int CurrentHealth
         {
             get
             {
-                throw new NotImplementedException();
+                return currentHealth;
+            }
+            private set
+            {
+                currentHealth = Mathf.Clamp(value, minHealth, maxHealth);
             }
         }
 
@@ -35,25 +36,22 @@ namespace SpaceShooter
         void IHealth.IncreaseHealth(int amount)
         {
             currentHealth += amount;
+            Debug.Log(currentHealth);            
+        }
 
-            if (currentHealth >= maxHealth)
-            {
-                currentHealth = maxHealth;
-            }
-            Debug.Log(currentHealth);
-            
+        public bool IsDead
+        {
+            get { return CurrentHealth == minHealth; }
         }
 
         // Degcrease SpaceShips/EnemyShips health
         public void DegcreaseHealth(int amount)
         {
             currentHealth -= amount;
-
-            if (currentHealth <= minHealth)
+            if(currentHealth <= minHealth)
             {
                 currentHealth = minHealth;
             }
-
             Debug.Log(currentHealth);
         }
     }

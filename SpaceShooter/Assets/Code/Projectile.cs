@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SpaceShooter
 {
-
+    [RequireComponent(typeof(Rigidbody2D))]
     public class Projectile : MonoBehaviour, IDamageProvider
     {
 
@@ -16,15 +16,6 @@ namespace SpaceShooter
         private Rigidbody2D _rigidbody;
         private Vector2 _direction;
         private bool _islaunched = false;
-
-        //Trying to get damage work from projectile
-        int IDamageProvider.GetDamage
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
 
         protected void Awake()
         {
@@ -49,7 +40,18 @@ namespace SpaceShooter
             _rigidbody.MovePosition(newPosition);
 
         }
-        
+
+        protected void OnTriggerEnter2D(Collider2D other)
+        {
+            IDamageReceiver damageReceiver = other.GetComponent<IDamageReceiver>();
+            if(damageReceiver != null)
+            {
+                Debug.Log("Damage taken!");
+                damageReceiver.TakeDamage(GetDamage());
+                Destroy(gameObject);
+            }
+        }
+
 
         public void Launch(Vector2 direction)
         {
@@ -57,7 +59,7 @@ namespace SpaceShooter
             _islaunched = true; 
         }
 
-    public int GetDamage()
+        public int GetDamage()
         {
             return _damage;
         }
@@ -69,7 +71,7 @@ namespace SpaceShooter
             if (health != null)
             {
                 health.DegcreaseHealth(20);
-
+                Destroy(collision.gameObject);
             }
         }
     }

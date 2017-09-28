@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -79,10 +81,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Code\ColorChanger.cs" />
-    <Compile Include="Assets\Code\Destoyer.cs" />
+    <Compile Include="Assets\Code\Destroyer.cs" />
     <Compile Include="Assets\Code\EnemySpaceShip.cs" />
     <Compile Include="Assets\Code\Health.cs" />
-    <Compile Include="Assets\Code\Interfaces\DamageProvider.cs" />
+    <Compile Include="Assets\Code\Interfaces\IDamageProvider.cs" />
+    <Compile Include="Assets\Code\Interfaces\IDamageReceiver.cs" />
     <Compile Include="Assets\Code\Interfaces\IHealth.cs" />
     <Compile Include="Assets\Code\LevelController.cs" />
     <Compile Include="Assets\Code\Player.cs" />

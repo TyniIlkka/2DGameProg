@@ -7,6 +7,6 @@ namespace SpaceShooter
 {
     public interface IDamageProvider
     {
-        int GetDamage { get; }
+        int GetDamage();
     }
 }

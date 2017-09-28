@@ -7,6 +7,12 @@ namespace SpaceShooter
     [RequireComponent(typeof(IHealth))]
     public abstract class SpaceShipBase : MonoBehaviour, IDamageReceiver
     {
+
+        public enum Type
+        {
+            Player,
+            Enemy
+        }
         // Backing field for the property Speed.
         // SerializeField attribute forces Unity to serialize this variable
         // in order to make it editable inside the editor.
@@ -30,6 +36,8 @@ namespace SpaceShooter
 
         //An autoproperty. Backing fields are generated automatically by the compiler.
         public IHealth Health { get; protected set; }
+
+        public abstract Type UnitType { get;  }
 
         protected virtual void Awake()
         {
@@ -103,5 +111,14 @@ namespace SpaceShooter
         {
             Destroy(gameObject);
         }
-    }
+
+        protected Projectile GetPooledProjectile()
+        {
+            return LevelController.Current.GetProjectile(UnitType);
+        }
+
+        protected bool ReturnPooleProjectile(Projectile projectile)
+        {
+            return LevelController.Current.ReturnProjectile(UnitType, projectile);
+        }
 }

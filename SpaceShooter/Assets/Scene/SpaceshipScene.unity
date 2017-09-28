@@ -334,9 +334,9 @@ MonoBehaviour:
   - {fileID: 1062999376}
   - {fileID: 1743703904}
   - {fileID: 1442840602}
-  _spawnInterval: 1
+  _spawnInterval: 3
   _maxEnemyOnField: 5
-  _waitToSpawn: 5
+  _waitToSpawn: 3
 --- !u!4 &1692089166
 Transform:
   m_ObjectHideFlags: 0

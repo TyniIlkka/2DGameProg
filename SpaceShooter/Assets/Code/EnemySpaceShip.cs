@@ -54,10 +54,14 @@ namespace SpaceShooter {
             }
         }
 
+        public override Type UnitType
+        {
+            get { return Type.Enemy; }
+        }
         protected override void Update()
         {
             base.Update();
-
+            Shoot();
             Debug.DrawLine(transform.position, CurrentMovementTarget.position, Color.green);
         }
     }

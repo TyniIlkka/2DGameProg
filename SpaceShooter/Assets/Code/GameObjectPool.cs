@@ -84,7 +84,12 @@ namespace SpaceShooter
                     break;
                 }
             }
+            if (result)
+            {
+                Debug.Log("Tried to return object which doesn't belong to this pool!");
+            }
             return result;
+            
         }
     }
 }

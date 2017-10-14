@@ -37,12 +37,15 @@ namespace SpaceShooter
         //An autoproperty. Backing fields are generated automatically by the compiler.
         public IHealth Health { get; protected set; }
 
-        public abstract Type UnitType { get;  }
+        public abstract Type UnitType { get; }
 
         protected virtual void Awake()
         {
             _weapons = GetComponentsInChildren<Weapon>(includeInactive: true);
-
+            foreach(Weapon weapon in _weapons)
+            {
+                weapon.Init(this);
+            }
             Health = GetComponent<Health>();
         }
 
@@ -72,31 +75,31 @@ namespace SpaceShooter
             }
         }
 
-      /*  //When Spaceships collide with something they take famage
-        void OnTriggerEnter2D(Collider2D collision)
-        {
+        /*  //When Spaceships collide with something they take famage
+          void OnTriggerEnter2D(Collider2D collision)
+          {
 
-            // if Collision with game object = true: take damage
-            if (collision.gameObject)
-            {
-                //Getting damage from Projectile doesn't work and don't know was it requirements
-                //_damage = collission.;//Damage that is done to the ships
-                _health = GetComponent<Health>();   //Current Healt of the ship that is collided
+              // if Collision with game object = true: take damage
+              if (collision.gameObject)
+              {
+                  //Getting damage from Projectile doesn't work and don't know was it requirements
+                  //_damage = collission.;//Damage that is done to the ships
+                  _health = GetComponent<Health>();   //Current Healt of the ship that is collided
 
-                //Debuggin the value of the _damage
-                Debug.Log(_damage);
+                  //Debuggin the value of the _damage
+                  Debug.Log(_damage);
 
-                //check if _health is null or not
-                if (_health != null)
-                {
-                    //Decreases health amount of damage
-                    _health.DegcreaseHealth(30); // Change the value to _damage variable when you get things to work.
-                }
+                  //check if _health is null or not
+                  if (_health != null)
+                  {
+                      //Decreases health amount of damage
+                      _health.DegcreaseHealth(30); // Change the value to _damage variable when you get things to work.
+                  }
 
-                //Destroy projectiles when you hit the enemyship and player if collides with enemy
-                Destroy(collision.gameObject);
-            }
-        }*/
+                  //Destroy projectiles when you hit the enemyship and player if collides with enemy
+                  Destroy(collision.gameObject);
+              }
+          }*/
 
         public void TakeDamage(int amount)
         {
@@ -121,4 +124,5 @@ namespace SpaceShooter
         {
             return LevelController.Current.ReturnProjectile(UnitType, projectile);
         }
+    }
 }
